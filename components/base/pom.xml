@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.apache.maven.its.nar</groupId>
+    <artifactId>it-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../it-parent/pom.xml</relativePath>
+  </parent>
+  
+  <groupId>org.qemu</groupId>
+  <artifactId>qemu-base</artifactId>
+  <packaging>nar</packaging>
+  <version>0.12.2</version>
+
+  <properties>
+    <skipTests>true</skipTests>
+  </properties>
+
+  <build>
+    <defaultGoal>integration-test</defaultGoal>
+    <plugins>
+      <plugin>
+        <artifactId>maven-nar-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <libraries>
+            <library>
+              <type>executable</type>
+              <run>true</run>
+            </library>
+          </libraries>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
