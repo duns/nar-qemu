@@ -9,6 +9,7 @@
 
   <modules>
     <module>base</module>
+    <module>hw</module>
     <module>slirp</module>
     <module>block</module>
   </modules>
