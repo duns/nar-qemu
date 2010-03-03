@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.apache.maven.its.nar</groupId>
+    <artifactId>it-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../it-parent/pom.xml</relativePath>
+  </parent>
+  
+  <artifactId>qemu</artifactId>
+  <packaging>nar</packaging>
+  <version>0.12.2</version>
+  
+  <name>QEMU open source processor emulator</name>
+  <description>QEMU is a generic and open source machine emulator and virtualizer.</description>
+  <url>http://wiki.qemu.org/</url>
+
+  <properties>
+    <skipTests>true</skipTests>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.qemu</groupId>
+      <artifactId>qemu-slirp</artifactId>
+      <version>0.12.2</version>
+      <type>nar</type>
+    </dependency>
+    <dependency>
+      <groupId>org.qemu</groupId>
+      <artifactId>qemu-block</artifactId>
+      <version>0.12.2</version>
+      <type>nar</type>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <defaultGoal>integration-test</defaultGoal>
+    <plugins>
+      <plugin>
+        <artifactId>maven-nar-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <libraries>
+            <library>
+              <type>executable</type>
+              <run>false</run>
+            </library>
+          </libraries>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
