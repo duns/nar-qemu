@@ -13,4 +13,58 @@
     <module>slirp</module>
     <module>block</module>
   </modules>
+
+  <properties>
+    <skipTests>true</skipTests>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-nar-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <libraries>
+            <library>
+              <type>static</type>
+            </library>
+          </libraries>
+          <cpp>
+            <clearDefaultDefines/>
+            <clearDefaultUndefines/>
+            <clearDefaultOptions/>
+          </cpp>
+          <c>
+            <clearDefaultDefines/>
+            <clearDefaultOptions/>
+            <clearDefaultUndefines/>
+            <options>
+              <option>-m64</option>
+              <option>-Wold-style-definition</option>
+              <option>-U_FORTIFY_SOURCE</option>
+              <option>-D_GNU_SOURCE</option> 
+              <option>-D_FILE_OFFSET_BITS=64</option> 
+              <option>-D_LARGEFILE_SOURCE</option> 
+              <option>-Wstrict-prototypes</option> 
+              <option>-Wredundant-decls</option> 
+              <option>-Wall</option> 
+              <option>-Wundef</option> 
+              <option>-Wendif-labels</option> 
+              <option>-Wwrite-strings</option> 
+              <option>-Wmissing-prototypes</option> 
+              <option>-fno-strict-aliasing</option>   
+              <option>-MMD</option> 
+              <option>-MP</option> 
+              <option>-MT</option> 
+<!--
+              <option>-H</option>
+              <option></option>
+-->
+            </options>
+          </c>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>

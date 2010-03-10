@@ -2,14 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.qemu</groupId>
+  <parent>
+    <groupId>org.qemu</groupId>
+    <artifactId>qemu-aggregator</artifactId>
+    <version>0.12.2</version>
+  </parent>
+  
   <artifactId>qemu-slirp</artifactId>
   <packaging>nar</packaging>
-  <version>0.12.2</version>
-
-  <properties>
-    <skipTests>true</skipTests>
-  </properties>
 
   <dependencies>
     <dependency>
@@ -26,57 +26,4 @@
     </dependency>
   </dependencies>
   
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-nar-plugin</artifactId>
-        <extensions>true</extensions>
-        <configuration>
-          <libraries>
-            <library>
-              <type>shared</type>
-<!--
-              <args>
-                <arg>-m64 -Wall -Wno-long-long -Wpointer-arith -Wconversion</arg>
-              </args>
--->
-            </library>
-          </libraries>
-          <cpp>
-            <clearDefaultDefines/>
-            <clearDefaultUndefines/>
-            <clearDefaultOptions/>
-          </cpp>
-          <c>
-            <clearDefaultDefines/>
-            <clearDefaultOptions/>
-            <clearDefaultUndefines/>
-            <options>
-              <option>-m64</option>
-              <option>-Wold-style-definition</option>
-              <option>-U_FORTIFY_SOURCE</option>
-              <option>-D_GNU_SOURCE</option> 
-              <option>-D_FILE_OFFSET_BITS=64</option> 
-              <option>-D_LARGEFILE_SOURCE</option> 
-              <option>-Wstrict-prototypes</option> 
-              <option>-Wredundant-decls</option> 
-              <option>-Wall</option> 
-              <option>-Wundef</option> 
-              <option>-Wendif-labels</option> 
-              <option>-Wwrite-strings</option> 
-              <option>-Wmissing-prototypes</option> 
-              <option>-fno-strict-aliasing</option>   
-              <option>-MMD</option> 
-              <option>-MP</option> 
-              <option>-MT</option> 
-<!--
-              <option>-H</option>
-              <option></option>
--->
-            </options>
-          </c>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>
